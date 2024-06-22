@@ -1,5 +1,7 @@
 import streamlit as st
 
+from notebooks.spam_email_detector.utils import predict_email
+
 # Sidebar contents
 st.sidebar.image("static/profile.png", use_column_width=True)  
 st.sidebar.title("Chanchala Gorale")
@@ -11,22 +13,19 @@ st.sidebar.markdown("""
 if st.sidebar.button('About Me'):
     st.session_state.page = 'about'
 if st.sidebar.button('My Work History'):
-    st.session_state.page = 'projects'
+    st.session_state.page = 'work'
 if st.sidebar.button('My Projects'):
     st.session_state.page = 'projects'
-if st.sidebar.button('Connect with Me'):
-    st.session_state.page = 'connect'
 if st.sidebar.button('Download My Resume'):
     st.session_state.page = 'resume'
+if st.sidebar.button('Connect with Me'):
+    st.session_state.page = 'connect'
 if st.sidebar.button('Gallery'):
     st.session_state.page = 'photo'
-
-
 
 # manage add button click 
 if 'page' not in st.session_state:
     st.session_state.page = 'about'
-
 
     # Main content
 if st.session_state.page == 'about':
@@ -35,7 +34,7 @@ if st.session_state.page == 'about':
         """
         ### Hello!
 
-        I am a AI Developer with over 7 years of experience in full-stack development and technical leadership. Proven track record in building and managing high-quality web and mobile applications. As the Founder & CTO of Nektor, led product strategy and growth initiatives, resulting in significant market traction and user engagement. 
+        AI Developer with over 7 years of experience in full-stack development and technical leadership. Proven track record in building and managing high-quality web and mobile applications. As the Founder & CTO of Nektor, led product strategy and growth initiatives, resulting in significant market traction and user engagement. 
         
         Currently transitioning into AI engineering, leveraging comprehensive technical skills and extensive project experience to create innovative AI-driven solutions. 
 
@@ -98,26 +97,117 @@ if st.session_state.page == 'about':
         """
     )
 
-elif st.session_state.page == 'projects':
-    st.title("My Projects")
+elif st.session_state.page == 'work':
+    st.title("My Work History")
     st.markdown(
             f"""
-            ### Project 1
-            Project description goes here
-            
-            [Try Now ](https://github.com)
+            ### [Nektor](https://nektor.app/)
+            Founder & CTO (Sep 2022 - Till Today)
 
+            ### [DarDoc](https://www.dardoc.com/)
+            Full-Stack Developer (Aug 2021 - Sep 2022)
+
+
+            ### [Juvoxa](https://www.linkedin.com/company/juvoxa/people/)
+            Front-End Developer (Jan 2021 - Aug 2021)
+
+
+            ### [Ellucian](https://www.ellucian.com/)
+            Sr Technical Writer (June 2019 - Jan 2021)
+
+
+            ### [Intel](https://www.intel.com/content/www/us/en/homepage.html)
+            Product Technical Writer/UI/UX Designer (Nov 2018 - Jun 2019)
+
+            ### [Alten](https://www.alten.com/)
+            Technical Writer (Nov 2016 - Nov 2018)
+            """
+        )
+    
+elif st.session_state.page == 'projects':
+    st.title("My Projects")
+    # project 1
+    st.markdown(
+        """
+        ### Spam Email Detector
+        Upload your email pdf file to see if the email received in spam or not.
+        """
+        
+    )
+    if st.button('Try Email Spam Detector'):
+        st.session_state.page = 'spam_email_detector'
+    
+
+    st.markdown(
+            f"""
+            ### Spam Email Detector
+            Creating a spam email detector involves training a machine learning model to classify emails as either "spam" or "ham" (non-spam).
+            
+            ###  Sentiment analysis
+            Sentiment analysis is the use of natural language processing, text analysis, computational linguistics, and biometrics to systematically identify, extract, quantify, and study affective states and subjective information
+            
+            ### Recommendation system
+            The Movie Recommendation System project involves designing an AI algorithm that suggests movies to users based on their preferences and viewing history.
+
+            ### Chatbot for Customer Service
+            Utilizing natural language processing (NLP) and machine learning algorithms, these chatbots can significantly improve the efficiency and availability of customer service across various industries.
+            
+            ### Stock price prediction
+            Stock Price Prediction projects use machine learning algorithms to forecast stock prices based on historical data.
+
+            ### Autonomous driving system
+            An Autonomous Driving System represents a middle-ground AI project, focusing on enabling vehicles to navigate and operate without human intervention. These systems can interpret sensory information by leveraging sensors, cameras, and complex AI algorithms to identify appropriate navigation paths, obstacles, and relevant signage. 
+
+            ### Handwritten digit recognition
+            The Handwritten Digit Recognition project is a foundational application of computer vision that involves training a machine learning model to identify and classify handwritten digits from images.
+
+            ### Image manipulation
+            Computer Vision combines machine learning with image/vision analysis to enable systems to infer insights from videos and images. For a computer, it becomes quite a challenge to interpret pictures and distinguish the features. 
+
+            ### Instagram spam detection
+            A fraud detection system employs machine learning algorithms to identify fraudulent activities in transactions, such as in banking or online retail. This project involves analyzing patterns and anomalies in transaction data to flag potentially fraudulent operations for further investigation.
+
+            ### Mask detection
+            Employ computer vision techniques like convolutional neural networks (CNNs) to develop a model capable of distinguishing between masked and unmasked faces. 
+
+            ### Object detection
+            Object Detection. Similar to that of face detection, objects can also be analysed using AI to determine the specifics or type of object it is.
+
+            ### Translation
+            Translation is the communication of the meaning of a source-language text by means of an equivalent target-language text.
+
+            ### Face recognition
+            Face Recognition. To create a face recognition system, one can start by collecting a dataset of images containing faces. 
+
+            ### Fraud detection system
+            An Advanced Fraud Detection System uses AI to identify potentially fraudulent transactions in real-time, minimizing financial losses and enhancing security. 
+
+            ### Music recommendation
+            Music Recommendation System. Budding AI developers can create music recommendation systems that are built upon music and genre datasets.
+
+            ### Voice assistant
+            Bing-GPT Voice Assistant. Build your own AI-powered personal assistant just like JARVIS. 
+
+            ### Email generator
+            With LLMs, you can build an email generator that takes a few prompts and magically generates engaging and personalized emails.
+
+            ### Animal species prediction
+            Prediction of Bird Species. Utilizing machine learning algorithms, this project predicts bird species based on images or audio recordings.
+
+            ### Heart disease prediction
+            Heart Disease Prediction Project. This project is beneficial from the medical perspective since it is designed to provide online medical consultati
             """
         )
         
-
 elif st.session_state.page == 'connect':
     st.title("Connect with Me")
+
     st.markdown(
         """
-        [LinkedIn](https://linkedin.com/in/username) \\
-        [GitHub](https://github.com/username) 
-        [Twitter](https://twitter.com/username)
+        I am always eager to connect with like-minded professionals and explore new opportunities in the dynamic world of AI and software development. Let's connect and grow together!
+
+
+        [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)  |   [GitHub](https://github.com/hypothesistribetechnology)   |   cgorale111@gmail.com
         """
     )
 
@@ -136,4 +226,16 @@ elif st.session_state.page == 'photo':
     for i in range(1, 71):
         st.image(f"static/gallery/{i}.jpg", use_column_width=True)  
 
-   
+# projects
+elif st.session_state.page == 'spam_email_detector':
+    st.title("Spam Email Detector")
+    st.markdown("Upload your email pdf file to see if the email received in spam or not.")
+    email_text = st.text_area("Email Text")
+
+    if st.button("Predict"):
+        if email_text:
+            prediction = predict_email(email_text)
+            st.write(f"The email is: **{prediction}**")
+        else:
+            st.write("Please enter an email text.")
+    
