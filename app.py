@@ -229,7 +229,7 @@ elif st.session_state.page == 'photo':
 # projects
 elif st.session_state.page == 'spam_email_detector':
     st.title("Spam Email Detector")
-    st.markdown("Upload your email pdf file to see if the email received in spam or not.")
+    st.markdown("Enter email to see if the email received is spam or not.")
     email_text = st.text_area("Email Text")
 
     if st.button("Predict"):

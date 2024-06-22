@@ -26,7 +26,7 @@ def predict_email(email):
     email_processed = preprocess_text(email)
     email_vectorized = vectorizer.transform([email_processed])
     prediction = model.predict(email_vectorized)
-
+    print(prediction)
     return "Spam" if prediction == 1 else "Not Spam"
 
 
