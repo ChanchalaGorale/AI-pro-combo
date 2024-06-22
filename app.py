@@ -7,8 +7,6 @@ st.sidebar.markdown("""
                    <h3> <span style="color:#b95d59">AI Engineer</span></h3>
                     """,unsafe_allow_html=True)
 
-
-
 # Sidebar buttons
 if st.sidebar.button('About Me'):
     st.session_state.page = 'about'
@@ -20,6 +18,8 @@ if st.sidebar.button('Connect with Me'):
     st.session_state.page = 'connect'
 if st.sidebar.button('Download My Resume'):
     st.session_state.page = 'resume'
+if st.sidebar.button('Gallery'):
+    st.session_state.page = 'photo'
 
 
 
@@ -130,3 +130,10 @@ elif st.session_state.page == 'resume':
             file_name="Chanchala Gorale Resume 2024.pdf",
             mime="application/pdf"
         )
+
+elif st.session_state.page == 'photo':
+    st.title("My Gallery")
+    for i in range(1, 71):
+        st.image(f"static/gallery/{i}.jpg", use_column_width=True)  
+
+   
