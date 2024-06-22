@@ -1,6 +1,11 @@
 import streamlit as st
 
 from notebooks.spam_email_detector.utils import predict_email
+import spacy
+import utils
+import utils.chat_bot
+
+nlp = spacy.load("en_core_web_sm")
 
 # Sidebar contents
 st.sidebar.image("static/profile.png", use_column_width=True)  
@@ -126,6 +131,19 @@ elif st.session_state.page == 'work':
     
 elif st.session_state.page == 'projects':
     st.title("My Projects")
+
+    # project 1
+    st.markdown(
+        """
+        ### Chat Bot
+        Ask question & get answer using google gemini pro llm api
+        """
+        
+    )
+    if st.button('Chat with Bot'):
+        st.session_state.page = 'chat_bot'
+
+
     # project 1
     st.markdown(
         """
@@ -136,6 +154,18 @@ elif st.session_state.page == 'projects':
     )
     if st.button('Try Email Spam Detector'):
         st.session_state.page = 'spam_email_detector'
+    
+    # project 2
+    st.markdown(
+        """
+        ### Document GPT
+        Upload your pdf file to get tokens, lemmatize tokens, document summary, and ask question to document
+
+        """
+        
+    )
+    if st.button('Try Document GPT'):
+        st.session_state.page = 'document_gpt'
     
 
     st.markdown(
@@ -238,4 +268,19 @@ elif st.session_state.page == 'spam_email_detector':
             st.write(f"The email is: **{prediction}**")
         else:
             st.write("Please enter an email text.")
-    
+
+elif st.session_state.page == 'document_gpt':
+    st.title("Document GPT")
+    st.markdown("Upload your document")
+
+    pdf = st.file_uploader("Only PDF files accepted.", type='pdf')
+
+
+    if pdf is not None:
+        #extract text
+        unclean_text = pdf_to_text_and_images(pdf)
+
+
+elif st.session_state.page == 'chat_bot':
+    st.title("Chat Bot")
+    utils.chat_bot.my_chatbot()
