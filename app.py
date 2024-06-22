@@ -3,7 +3,7 @@ from flask_cors import CORS
 
 app=Flask(__name__)
 
-CORS(app, resources={r"/api/*": {"origins":["https://voluble-taiyaki-30e7ef.netlify.app/", "http://localhost:3000/"]}})
+CORS(app, resources={r"/api/*": {"origins":"https://voluble-taiyaki-30e7ef.netlify.app/"}})
 
 @app.route("/api/data", methods=["GET", "POST"])
 def get_data():
