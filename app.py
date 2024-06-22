@@ -5,7 +5,7 @@ app=Flask(__name__)
 
 CORS(app, resources={r"/api/*": {"origins":"https://voluble-taiyaki-30e7ef.netlify.app/"}})
 
-@app.route("/api/data", methods=["GET", "POST"])
+@app.route("/api/data", methods=["GET", "POST", 'OPTIONS'])
 def get_data():
     data = {
         "name": "John Doe",
