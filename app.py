@@ -14,8 +14,7 @@ def get_data():
     }
 
     response = jsonify(data)
-
-   # response.headers.add('Access-Control-Allow-Origin', 'https://voluble-taiyaki-30e7ef.netlify.app')  # Replace with your frontend domain
+    response.headers.add('Access-Control-Allow-Origin', 'https://voluble-taiyaki-30e7ef.netlify.app')  
     return response
 
 
