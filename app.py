@@ -9,6 +9,7 @@ import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import tensorflow as tf
 import numpy as np
+import webbrowser
 
 
 
@@ -16,7 +17,7 @@ nltk.download('vader_lexicon')
 nlp = spacy.load("en_core_web_sm")
 
 # Sidebar contents
-st.sidebar.image("static/profile.png", use_column_width=True)  
+st.sidebar.image("static/profile.png", use_column_width=True,)  
 st.sidebar.title("Chanchala Gorale")
 st.sidebar.markdown("""
                    <h3> <span style="color:#b95d59">AI Engineer</span></h3>
@@ -33,8 +34,10 @@ if st.sidebar.button('Download My Resume'):
     st.session_state.page = 'resume'
 if st.sidebar.button('Connect with Me'):
     st.session_state.page = 'connect'
-if st.sidebar.button('Gallery'):
-    st.session_state.page = 'photo'
+if st.sidebar.button('My Gallery'):
+    link="https://photos.app.goo.gl/42DqydSPLx9R6uid7"
+    webbrowser.open(link, new=2)
+    #st.session_state.page = 'photo'
 
 # manage add button click 
 if 'page' not in st.session_state:
@@ -289,7 +292,7 @@ elif st.session_state.page == 'connect':
         I am always eager to connect with like-minded professionals and explore new opportunities in the dynamic world of AI and software development. Let's connect and grow together!
 
 
-        [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)  |   [GitHub](https://github.com/hypothesistribetechnology)   |   cgorale111@gmail.com
+        [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)  |   [GitHub](https://github.com/hypothesistribetechnology)   |   cgorale111@gmail.com  |   [Medium](https://medium.com/@cgorale111)
         """
     )
 
@@ -303,10 +306,10 @@ elif st.session_state.page == 'resume':
             mime="application/pdf"
         )
 
-elif st.session_state.page == 'photo':
-    st.title("My Gallery")
-    for i in range(1, 71):
-        st.image(f"static/gallery/{i}.jpg", use_column_width=True)  
+# elif st.session_state.page == 'photo':
+#     st.title("My Gallery")
+#     for i in range(1, 71):
+#         st.image(f"static/gallery/{i}.jpg", use_column_width=True)  
 
 # projects
 elif st.session_state.page == 'spam_email_detector':

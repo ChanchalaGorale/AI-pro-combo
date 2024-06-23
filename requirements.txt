@@ -118,3 +118,4 @@ nltk
 langdetect
 langchain_openai
 tensorflow
+webbrowser
