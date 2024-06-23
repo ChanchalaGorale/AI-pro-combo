@@ -4,6 +4,8 @@ from notebooks.spam_email_detector.utils import predict_email
 import spacy
 import utils
 import utils.chat_bot
+import utils.docgpt
+from notebooks.sentiment_analyzer_text.utils import predict_sentiment
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -32,7 +34,11 @@ if st.sidebar.button('Gallery'):
 if 'page' not in st.session_state:
     st.session_state.page = 'about'
 
-    # Main content
+
+def set_page(page):
+    st.session_state.page = page
+
+# Main content
 if st.session_state.page == 'about':
     st.title("About Me")
     st.markdown(
@@ -136,12 +142,11 @@ elif st.session_state.page == 'projects':
     st.markdown(
         """
         ### Chat Bot
-        Ask question & get answer using google gemini pro llm api
+        Ask question & get answer using google gemini pro chatbot api
         """
         
     )
-    if st.button('Chat with Bot'):
-        st.session_state.page = 'chat_bot'
+    st.button("Chat with Bot", on_click=set_page, args=['chat_bot'])
 
 
     # project 1
@@ -152,8 +157,7 @@ elif st.session_state.page == 'projects':
         """
         
     )
-    if st.button('Try Email Spam Detector'):
-        st.session_state.page = 'spam_email_detector'
+    st.button("Detect Email Spam", on_click=set_page, args=['spam_email_detector'])
     
     # project 2
     st.markdown(
@@ -164,18 +168,25 @@ elif st.session_state.page == 'projects':
         """
         
     )
-    if st.button('Try Document GPT'):
-        st.session_state.page = 'document_gpt'
+
+    st.button("Try Doc GPT", on_click=set_page, args=['document_gpt'])
+
+
+    # project 2
+    st.markdown(
+        """
+        ###  Sentiment analysis of Twitter text
+        Anlyse sentiment of the twitter text
+
+        """
+        
+    )
+
+    st.button("Try Sentiment Analyzer", on_click=set_page, args=['sentiment_analyzer'])
     
 
     st.markdown(
             f"""
-            ### Spam Email Detector
-            Creating a spam email detector involves training a machine learning model to classify emails as either "spam" or "ham" (non-spam).
-            
-            ###  Sentiment analysis
-            Sentiment analysis is the use of natural language processing, text analysis, computational linguistics, and biometrics to systematically identify, extract, quantify, and study affective states and subjective information
-            
             ### Recommendation system
             The Movie Recommendation System project involves designing an AI algorithm that suggests movies to users based on their preferences and viewing history.
 
@@ -258,6 +269,8 @@ elif st.session_state.page == 'photo':
 
 # projects
 elif st.session_state.page == 'spam_email_detector':
+    st.button("← Go Back", on_click=set_page, args=['projects'])
+
     st.title("Spam Email Detector")
     st.markdown("Enter email to see if the email received is spam or not.")
     email_text = st.text_area("Email Text")
@@ -270,17 +283,28 @@ elif st.session_state.page == 'spam_email_detector':
             st.write("Please enter an email text.")
 
 elif st.session_state.page == 'document_gpt':
-    st.title("Document GPT")
-    st.markdown("Upload your document")
-
-    pdf = st.file_uploader("Only PDF files accepted.", type='pdf')
-
-
-    if pdf is not None:
-        #extract text
-        unclean_text = pdf_to_text_and_images(pdf)
+    utils.docgpt.getgpt(set_page)
 
 
 elif st.session_state.page == 'chat_bot':
+    st.button("← Go Back", on_click=set_page, args=['projects'])
     st.title("Chat Bot")
     utils.chat_bot.my_chatbot()
+
+elif st.session_state.page == 'sentiment_analyzer':
+    st.button("← Go Back", on_click=set_page, args=['projects'])
+    st.title("Sentiment Analyzer")
+    text = st.text_area("Email Text")
+
+    submit = st.button("Anlyse Sentiment")
+
+    if text and submit:
+
+        prediction= predict_sentiment(text)
+
+        set.write("Sentiment: ", prediction)
+
+
+    
+
+    
