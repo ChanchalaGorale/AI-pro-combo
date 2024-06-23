@@ -116,3 +116,5 @@ pdfplumber
 pytesseract
 nltk
 langdetect
+langchain_community
+langchain_openai
