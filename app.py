@@ -9,7 +9,6 @@ import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import tensorflow as tf
 import numpy as np
-import webbrowser
 
 
 
@@ -34,10 +33,8 @@ if st.sidebar.button('My Projects'):
     st.session_state.page = 'projects'
 if st.sidebar.button('Connect with Me'):
     st.session_state.page = 'connect'
-if st.sidebar.button('My Gallery'):
-    link="https://photos.app.goo.gl/42DqydSPLx9R6uid7"
-    webbrowser.open(link, new=2)
-    #st.session_state.page = 'photo'
+
+st.sidebar.markdown('### [View My Gallery](https://photos.app.goo.gl/42DqydSPLx9R6uid7")')
 
 # manage add button click 
 if 'page' not in st.session_state:
