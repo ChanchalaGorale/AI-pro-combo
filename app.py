@@ -11,7 +11,6 @@ import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import tensorflow as tf
 import numpy as np
-import pickle
 
 
 
