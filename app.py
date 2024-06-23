@@ -1,9 +1,7 @@
 import streamlit as st
 from notebooks.spam_email_detector.utils import predict_email
 import spacy
-import utils
-import utils.chat_bot
-import utils.docgpt
+from utils import chat_bot, docgpt
 from notebooks.height_weight_predict.utils import predict_height
 from notebooks.car_price_prediction.utils import predict_car_price
 from PIL import Image
@@ -326,12 +324,12 @@ elif st.session_state.page == 'spam_email_detector':
             st.write("Please enter an email text.")
 
 elif st.session_state.page == 'document_gpt':
-    utils.docgpt.getgpt(set_page)
+    docgpt.getgpt(set_page)
 
 elif st.session_state.page == 'chat_bot':
     st.button("← Go Back", on_click=set_page, args=['projects'])
     st.title("Chat Bot")
-    utils.chat_bot.my_chatbot()
+    chat_bot.my_chatbot()
 
 elif st.session_state.page == 'height_predict':
     st.button("← Go Back", on_click=set_page, args=['projects'])
