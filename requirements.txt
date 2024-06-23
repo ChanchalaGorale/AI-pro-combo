@@ -117,3 +117,4 @@ pytesseract
 nltk
 langdetect
 langchain_openai
+tensorflow
