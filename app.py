@@ -23,6 +23,8 @@ st.sidebar.markdown("""
                    <h3> <span style="color:#b95d59">AI Engineer</span></h3>
                     """,unsafe_allow_html=True)
 
+st.sidebar.markdown("""Follow Me: [Github](https://github.com/hypothesistribetechnology)   |   [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)   |   [Medium](https://medium.com/@cgorale111)""")
+
 # Sidebar buttons
 if st.sidebar.button('About Me'):
     st.session_state.page = 'about'
@@ -30,8 +32,6 @@ if st.sidebar.button('My Work History'):
     st.session_state.page = 'work'
 if st.sidebar.button('My Projects'):
     st.session_state.page = 'projects'
-if st.sidebar.button('Download My Resume'):
-    st.session_state.page = 'resume'
 if st.sidebar.button('Connect with Me'):
     st.session_state.page = 'connect'
 if st.sidebar.button('My Gallery'):
@@ -113,7 +113,7 @@ if st.session_state.page == 'about':
         ### Education
         - **Aeronautical Engineering** (2016, Academy of Aviation & Engineering Bangalore)
 
-        [Github](https://github.com/hypothesistribetechnology) [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)
+        Follow Me: [Github](https://github.com/hypothesistribetechnology)   |   [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)   |   [Medium](https://medium.com/@cgorale111)
         """
     )
 
@@ -151,7 +151,7 @@ elif st.session_state.page == 'projects':
     st.markdown(
         """
         ### Chat Bot
-        Ask question & get answer using google gemini pro chatbot api
+        A chatbot created with the Gemini Pro API leverages advanced natural language processing to deliver sophisticated and accurate conversational experiences. It is designed to understand context, provide relevant responses, and handle complex queries efficiently. This AI-powered solution enhances customer interactions, automates support tasks, and improves overall user engagement.
         """
         
     )
@@ -161,7 +161,7 @@ elif st.session_state.page == 'projects':
     st.markdown(
         """
         ### Car Price Prediction
-        some description
+        The Car Price Prediction model uses a RandomForestRegressor to estimate vehicle prices based on various features such as make, model, year, mileage, and more. By leveraging the ensemble learning approach of random forests, the model achieves high accuracy and reliability, making it useful for both buyers and sellers in the automotive market.
         """
         
     )
@@ -173,7 +173,7 @@ elif st.session_state.page == 'projects':
     st.markdown(
         """
         ### Weight to Height Prediction
-        some content
+        Height prediction based on weight using a Linear Regression model involves finding a linear relationship between weight (independent variable) and height (dependent variable). The model uses this relationship to predict height from given weight data, providing a simple yet effective way to estimate height based on weight measurements.
         """
         
     )
@@ -184,7 +184,7 @@ elif st.session_state.page == 'projects':
     st.markdown(
         """
         ### Spam Email Detector
-        Upload your email pdf file to see if the email received in spam or not.
+        The spam email detection app employs a TfidfVectorizer to convert email text into numerical feature vectors and an SVC (Support Vector Classifier) model for classification. This combination effectively distinguishes between spam and legitimate emails, enhancing email security and reducing unwanted messages in users' inboxes.
         """
         
     )
@@ -207,7 +207,7 @@ elif st.session_state.page == 'projects':
     st.markdown(
         """
         ###  Text analyzer
-        Anlyse sentiment of the twitter text
+        Text Analyzer evaluates the sentiment of your text, determining whether it is positive, negative, or neutral. Simply enter your text, and our tool provides an immediate result, helping you understand the emotional tone and potential impact of your message. Perfect for writers, marketers, and anyone needing sentiment analysis.
 
         """
         
@@ -220,7 +220,7 @@ elif st.session_state.page == 'projects':
     st.markdown(
         """
         ###  Image analyzer
-        Anlyse sentiment of the twitter text
+        An Image Analyzer is a tool that examines and extracts various features from images, such as objects, colors, shapes, textures, and patterns. It uses advanced algorithms and machine learning techniques to identify and classify elements within the image, enabling detailed analysis and insights for various applications.
 
         """
         
@@ -231,58 +231,99 @@ elif st.session_state.page == 'projects':
 
     st.markdown(
             f"""
-            ### Recommendation system
-            The Movie Recommendation System project involves designing an AI algorithm that suggests movies to users based on their preferences and viewing history.
-
-            ### Chatbot for Customer Service
-            Utilizing natural language processing (NLP) and machine learning algorithms, these chatbots can significantly improve the efficiency and availability of customer service across various industries.
+            ### Maleria Detection
+            The malaria detection model leverages a Convolutional Neural Network (Conv2D) to analyze microscopic blood smear images. This AI-driven approach enhances the accuracy and speed of diagnosing malaria by identifying parasitic infections within red blood cells. The model automates detection, reducing the need for manual microscopic analysis and supporting timely medical intervention.
             
-            ### Stock price prediction
-            Stock Price Prediction projects use machine learning algorithms to forecast stock prices based on historical data.
+            [Git Repo](https://github.com/hypothesistribetechnology/malaria-detection/blob/main/prediction%20model.ipynb)
 
-            ### Autonomous driving system
-            An Autonomous Driving System represents a middle-ground AI project, focusing on enabling vehicles to navigate and operate without human intervention. These systems can interpret sensory information by leveraging sensors, cameras, and complex AI algorithms to identify appropriate navigation paths, obstacles, and relevant signage. 
-
-            ### Handwritten digit recognition
-            The Handwritten Digit Recognition project is a foundational application of computer vision that involves training a machine learning model to identify and classify handwritten digits from images.
-
-            ### Image manipulation
-            Computer Vision combines machine learning with image/vision analysis to enable systems to infer insights from videos and images. For a computer, it becomes quite a challenge to interpret pictures and distinguish the features. 
-
-            ### Instagram spam detection
-            A fraud detection system employs machine learning algorithms to identify fraudulent activities in transactions, such as in banking or online retail. This project involves analyzing patterns and anomalies in transaction data to flag potentially fraudulent operations for further investigation.
-
-            ### Mask detection
-            Employ computer vision techniques like convolutional neural networks (CNNs) to develop a model capable of distinguishing between masked and unmasked faces. 
-
-            ### Object detection
-            Object Detection. Similar to that of face detection, objects can also be analysed using AI to determine the specifics or type of object it is.
-
-            ### Translation
-            Translation is the communication of the meaning of a source-language text by means of an equivalent target-language text.
-
-            ### Face recognition
-            Face Recognition. To create a face recognition system, one can start by collecting a dataset of images containing faces. 
-
-            ### Fraud detection system
-            An Advanced Fraud Detection System uses AI to identify potentially fraudulent transactions in real-time, minimizing financial losses and enhancing security. 
-
-            ### Music recommendation
-            Music Recommendation System. Budding AI developers can create music recommendation systems that are built upon music and genre datasets.
-
-            ### Voice assistant
-            Bing-GPT Voice Assistant. Build your own AI-powered personal assistant just like JARVIS. 
-
-            ### Email generator
-            With LLMs, you can build an email generator that takes a few prompts and magically generates engaging and personalized emails.
-
-            ### Animal species prediction
-            Prediction of Bird Species. Utilizing machine learning algorithms, this project predicts bird species based on images or audio recordings.
-
-            ### Heart disease prediction
-            Heart Disease Prediction Project. This project is beneficial from the medical perspective since it is designed to provide online medical consultati
+            
             """
         )
+    
+    st.markdown(
+        """
+        ### Load Approval Risk Prediction
+        Load Approval Risk Prediction involves using LabelEncoder for categorical data encoding, PolynomialFeatures for feature interaction and non-linear transformation, and RandomForestClassifier for robust classification. This combination enhances the model's ability to predict the risk associated with loan approvals by capturing complex relationships within the data.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/load-approval-risk-prediction/blob/main/model.ipynb)
+        """
+        
+    )
+    st.markdown(
+        """
+        ### Parkinson's disease detection
+        Parkinson's disease detection can be enhanced using machine learning techniques like StandardScaler for feature normalization and Support Vector Classifier (SVC) for classification. StandardScaler standardizes data, improving SVC performance. This method efficiently distinguishes between healthy individuals and those with Parkinson's, aiding early diagnosis and treatment planning.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/parkinson-s-disease-detection/blob/main/model.ipynb)
+        """
+        
+    )
+
+    st.markdown(
+        """
+        ### Customer segmentation
+        Customer segmentation using KMeans clusters clients based on similarities in behavior, demographics, or preferences. By analyzing data, KMeans identifies distinct groups, allowing businesses to tailor marketing strategies and services effectively. This method enhances customer satisfaction and boosts profitability by addressing diverse needs and interests within target segments.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/customers-segmentation/blob/main/model.ipynb)
+        """
+        
+    )
+    st.markdown(
+        """
+        ### Mart Sales Prediction
+        The "mart-sales-prediction" project employs data preprocessing techniques like StandardScaler for feature scaling and LabelEncoder for categorical variable transformation. It utilizes XGBRegressor for building a predictive model, aiming to forecast sales accurately. This approach ensures robust performance by optimizing data preprocessing and leveraging advanced regression techniques.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/mart-sales-prediction/blob/main/model.ipynb)
+        """
+        
+    )
+    st.markdown(
+        """
+        ### Credit Card Fraud 
+        Linear regression is inadequate for detecting credit card fraud due to its inability to capture nonlinear patterns in transaction data. Fraud detection demands more sophisticated methods like anomaly detection or machine learning classifiers, which can identify unusual patterns and deviations from normal behavior, crucial for effective fraud prevention.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/creadit-card-fraud/blob/main/model.ipynb)
+        """
+        
+    )
+    st.markdown(
+        """
+        ### Gold Price Prediction 
+        Using RandomForestRegressor for gold price prediction involves training a model on historical data, incorporating factors like economic indicators and market trends. By leveraging ensemble learning, it enhances prediction accuracy by averaging multiple decision trees. This approach enables forecasting future gold prices based on past patterns and current market conditions.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/gold-price-prediction/blob/main/model.ipynb)
+        """
+        
+    )
+    st.markdown(
+        """
+        ### Heart Disease Prediction
+        Using Logistic Regression and StandardScaler for heart disease prediction involves preprocessing data with StandardScaler to normalize features, enhancing model performance. Logistic Regression then predicts heart disease based on input data, utilizing a probabilistic approach to classify patients' risk. This method optimizes accuracy by scaling and fitting data appropriately for predictive analysis.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/heart-disease-prediction/blob/main/model.ipynb)
+        """
+        
+    )
+    st.markdown(
+        """
+        ### Load Status Prediction
+        The project involves predicting loan status and amounts using Logistic Regression and StandardScaler. Logistic Regression models classify loan approval/rejection, while StandardScaler normalizes numerical features. The approach aims for accurate predictions by fitting data to a logistic curve and scaling inputs for optimal model performance in financial decision-making.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/loan-status-and-load-amount-prediction/blob/main/load%20amount%20prediction.ipynb)
+        """
+        
+    )
+    st.markdown(
+        """
+        ### Forest fire prediction
+        Forest fire prediction using LogisticRegression and StandardScaler involves preprocessing data with StandardScaler to normalize features. LogisticRegression then models the likelihood of a fire occurrence based on historical data. This approach aims to classify future fire events, providing early warnings for effective forest management and prevention strategies.
+
+        [Git Repo](https://github.com/hypothesistribetechnology/forest_fire_prediction/blob/main/model.ipynb)
+        """
+        
+    )
+
+    
         
 elif st.session_state.page == 'connect':
     st.title("Connect with Me")
@@ -292,7 +333,7 @@ elif st.session_state.page == 'connect':
         I am always eager to connect with like-minded professionals and explore new opportunities in the dynamic world of AI and software development. Let's connect and grow together!
 
 
-        [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)  |   [GitHub](https://github.com/hypothesistribetechnology)   |   cgorale111@gmail.com  |   [Medium](https://medium.com/@cgorale111)
+        Follow Me:  [LinkedIn](https://www.linkedin.com/in/chanchala-g-2b040411a/)  |   [GitHub](https://github.com/hypothesistribetechnology)   |   cgorale111@gmail.com  |   [Medium](https://medium.com/@cgorale111)
         """
     )
 
@@ -306,10 +347,6 @@ elif st.session_state.page == 'resume':
             mime="application/pdf"
         )
 
-# elif st.session_state.page == 'photo':
-#     st.title("My Gallery")
-#     for i in range(1, 71):
-#         st.image(f"static/gallery/{i}.jpg", use_column_width=True)  
 
 # projects
 elif st.session_state.page == 'spam_email_detector':
