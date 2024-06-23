@@ -32,7 +32,7 @@ def my_chatbot():
         for chunk in response:
             st.write(chunk.text)
 
-            st.session_state["chat_history"].append(("Bot", chunk.text))
+            #st.session_state["chat_history"].append(("Bot", chunk.text))
         
         st.subheader("History")
         

@@ -7,6 +7,14 @@ import utils.chat_bot
 import utils.docgpt
 from notebooks.sentiment_analyzer_text.utils import predict_sentiment
 from notebooks.height_weight_predict.utils import predict_height
+from PIL import Image
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import tensorflow as tf
+import numpy as np
+import cv2
+
+nltk.download('vader_lexicon')
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -139,8 +147,6 @@ elif st.session_state.page == 'work':
 elif st.session_state.page == 'projects':
     st.title("My Projects")
 
-
-
     # project 1
     st.markdown(
         """
@@ -189,14 +195,27 @@ elif st.session_state.page == 'projects':
     # project 2
     st.markdown(
         """
-        ###  Sentiment analysis of Twitter text
+        ###  Text analyzer
+        Anlyse sentiment of the twitter text
+
+        """
+        
+    )
+    st.button("Try Text Analyzer", on_click=set_page, args=['sentiment_analyzer'])
+
+    
+
+    # project 2
+    st.markdown(
+        """
+        ###  Image analyzer
         Anlyse sentiment of the twitter text
 
         """
         
     )
 
-    st.button("Try Sentiment Analyzer", on_click=set_page, args=['sentiment_analyzer'])
+    st.button("Try Image Analyzer", on_click=set_page, args=['image_analyzer'])
     
 
     st.markdown(
@@ -299,7 +318,6 @@ elif st.session_state.page == 'spam_email_detector':
 elif st.session_state.page == 'document_gpt':
     utils.docgpt.getgpt(set_page)
 
-
 elif st.session_state.page == 'chat_bot':
     st.button("← Go Back", on_click=set_page, args=['projects'])
     st.title("Chat Bot")
@@ -318,19 +336,60 @@ elif st.session_state.page == 'height_predict':
         prediction= predict_height(text)
 
         st.write("Height is about ", prediction)
+
+elif st.session_state.page == 'image_analyzer':
+    st.button("← Go Back", on_click=set_page, args=['projects'])
+    st.title("Image Analyzer")
+    image = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+
+    if image is not None:
+
+        image = Image.open(image)
+
+        resized_image = image.resize((224, 224))
+
+        st.image(resized_image, caption='Resized Image (224x224).', use_column_width=True)
+
+        img_array = np.array(resized_image)
+
+        processed_image= np.expand_dims(img_array, axis=0)
+       
+        img = tf.keras.applications.mobilenet_v2.preprocess_input(processed_image)
+
+        model = tf.keras.applications.MobileNetV2(weights='imagenet', include_top=True)
     
+        predictions = model.predict(img)
+
+        decoded_predictions = tf.keras.applications.mobilenet_v2.decode_predictions(predictions, top=3)[0]
+
+        st.write("Image Contains:")
+        for i, (imagenet_id, label, score) in enumerate(decoded_predictions):
+            st.write(f"{i+1}. {label}: {score*100:.2f}%")
+            
 elif st.session_state.page == 'sentiment_analyzer':
     st.button("← Go Back", on_click=set_page, args=['projects'])
-    st.title("Sentiment Analyzer")
-    text = st.text_area("Email Text")
+    st.title("Text Analyzer")
+
+    text = st.text_area("Enter text to anlyse")
 
     submit = st.button("Anlyse Sentiment")
 
     if text and submit:
+        sia= SentimentIntensityAnalyzer()
 
-        prediction= predict_sentiment(text)
+        result =sia.polarity_scores(text)
 
-        set.write("Sentiment: ", prediction)
+        sentiments = {
+            "neg":"Negative",
+            "neu":"Neutral",
+            "pos":"Position",
+            "compound":"Mixed Emotions"
+        }
+
+        for key, value in result.items():
+            if value == 1:
+                st.write("Sentiment: ", sentiments[key])
+                break
 
 
     
