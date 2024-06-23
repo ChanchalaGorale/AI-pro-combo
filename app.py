@@ -1,21 +1,21 @@
 import streamlit as st
-
 from notebooks.spam_email_detector.utils import predict_email
 import spacy
 import utils
 import utils.chat_bot
 import utils.docgpt
-from notebooks.sentiment_analyzer_text.utils import predict_sentiment
 from notebooks.height_weight_predict.utils import predict_height
+from notebooks.car_price_prediction.utils import predict_car_price
 from PIL import Image
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import tensorflow as tf
 import numpy as np
-import cv2
+import pickle
+
+
 
 nltk.download('vader_lexicon')
-
 nlp = spacy.load("en_core_web_sm")
 
 # Sidebar contents
@@ -156,6 +156,17 @@ elif st.session_state.page == 'projects':
         
     )
     st.button("Chat with Bot", on_click=set_page, args=['chat_bot'])
+
+    # project 1
+    st.markdown(
+        """
+        ### Car Price Prediction
+        some description
+        """
+        
+    )
+    st.button("Predict Car Price", on_click=set_page, args=['car_price_predict'])
+
 
 
     # project 1
@@ -336,6 +347,47 @@ elif st.session_state.page == 'height_predict':
         prediction= predict_height(text)
 
         st.write("Height is about ", prediction)
+
+
+elif st.session_state.page == 'car_price_predict':
+    st.button("← Go Back", on_click=set_page, args=['projects'])
+    st.title("Car Price Prediction")
+    years = st.number_input("Enter total no of yeras since purchase:")
+    km = st.number_input("Enter total no km traveled:")
+    rating = st.number_input("Enter rating 1-5:")
+    condition = st.number_input("Enter rating 1-10:")
+    economy = st.number_input("Enter economy:")
+    speed = st.number_input("Enter to speed:")
+    hp = st.number_input("Enter to HP:")
+    torque = st.number_input("Enter to torque:")
+
+    submit = st.button("Predict Price")
+
+    if years and km and rating and condition and economy and speed and hp and torque and submit:
+
+        data=[]
+
+        data.append(years)
+        data.append(km)
+        data.append(rating)
+        data.append(condition)
+        data.append(economy)
+        data.append(speed)
+        data.append(hp)
+        data.append(torque)
+
+        print("printing data before",data)
+
+        st.write("Car Data: ", data)
+
+        if len(data)==8:
+           
+            prediction= predict_car_price(data)
+
+            if prediction:
+                st.write("You can sell car for upto: ", prediction)
+
+
 
 elif st.session_state.page == 'image_analyzer':
     st.button("← Go Back", on_click=set_page, args=['projects'])
