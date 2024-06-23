@@ -34,11 +34,11 @@ if st.sidebar.button('My Projects'):
 if st.sidebar.button('Connect with Me'):
     st.session_state.page = 'connect'
 
-st.sidebar.markdown('### [View My Gallery](https://photos.app.goo.gl/42DqydSPLx9R6uid7")')
+#st.sidebar.markdown('### [View My Gallery](https://photos.app.goo.gl/42DqydSPLx9R6uid7")')
 
 # manage add button click 
 if 'page' not in st.session_state:
-    st.session_state.page = 'projects'
+    st.session_state.page = 'about'
 
 
 def set_page(page):
