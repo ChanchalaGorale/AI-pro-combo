@@ -6,6 +6,7 @@ import utils
 import utils.chat_bot
 import utils.docgpt
 from notebooks.sentiment_analyzer_text.utils import predict_sentiment
+from notebooks.height_weight_predict.utils import predict_height
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -32,7 +33,7 @@ if st.sidebar.button('Gallery'):
 
 # manage add button click 
 if 'page' not in st.session_state:
-    st.session_state.page = 'about'
+    st.session_state.page = 'projects'
 
 
 def set_page(page):
@@ -138,6 +139,8 @@ elif st.session_state.page == 'work':
 elif st.session_state.page == 'projects':
     st.title("My Projects")
 
+
+
     # project 1
     st.markdown(
         """
@@ -147,6 +150,17 @@ elif st.session_state.page == 'projects':
         
     )
     st.button("Chat with Bot", on_click=set_page, args=['chat_bot'])
+
+
+    # project 1
+    st.markdown(
+        """
+        ### Weight to Height Prediction
+        some content
+        """
+        
+    )
+    st.button("Try Height Predictor", on_click=set_page, args=['height_predict'])
 
 
     # project 1
@@ -291,6 +305,20 @@ elif st.session_state.page == 'chat_bot':
     st.title("Chat Bot")
     utils.chat_bot.my_chatbot()
 
+elif st.session_state.page == 'height_predict':
+    st.button("← Go Back", on_click=set_page, args=['projects'])
+    st.title("Weight to Height Prediction")
+
+    text = st.text_area("Enter weight to predict height")
+
+    submit = st.button("Predict Height")
+
+    if text and submit:
+
+        prediction= predict_height(text)
+
+        st.write("Height is about ", prediction)
+    
 elif st.session_state.page == 'sentiment_analyzer':
     st.button("← Go Back", on_click=set_page, args=['projects'])
     st.title("Sentiment Analyzer")
