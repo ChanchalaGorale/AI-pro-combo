@@ -1,7 +1,7 @@
 import streamlit as st
 from notebooks.spam_email_detector.utils import predict_email
 import spacy
-from utils import chat_bot, docgpt
+from utils import chat_bot
 from notebooks.height_weight_predict.utils import predict_height
 from notebooks.car_price_prediction.utils import predict_car_price
 from PIL import Image
@@ -188,16 +188,16 @@ elif st.session_state.page == 'projects':
     st.button("Detect Email Spam", on_click=set_page, args=['spam_email_detector'])
     
     # project 2
-    st.markdown(
-        """
-        ### Document GPT
-        Upload your pdf file to get tokens, lemmatize tokens, document summary, and ask question to document
+    # st.markdown(
+    #     """
+    #     ### Document GPT
+    #     Upload your pdf file to get tokens, lemmatize tokens, document summary, and ask question to document
 
-        """
+    #     """
         
-    )
+    # )
 
-    st.button("Try Doc GPT", on_click=set_page, args=['document_gpt'])
+    # st.button("Try Doc GPT", on_click=set_page, args=['document_gpt'])
 
 
     # project 2
@@ -323,8 +323,8 @@ elif st.session_state.page == 'spam_email_detector':
         else:
             st.write("Please enter an email text.")
 
-elif st.session_state.page == 'document_gpt':
-    docgpt.getgpt(set_page)
+# elif st.session_state.page == 'document_gpt':
+#     docgpt.getgpt(set_page)
 
 elif st.session_state.page == 'chat_bot':
     st.button("← Go Back", on_click=set_page, args=['projects'])
